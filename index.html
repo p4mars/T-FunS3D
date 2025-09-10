@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyProject: A One-Line Tagline</title>
+  <style>
+    /* Minimal styling — inspired by simple academic project pages */
+    body { font-family: sans-serif; line-height: 1.6; margin: 2em auto; max-width: 800px; padding: 0 1em; }
+    h1 { font-size: 2em; margin-bottom: 0.1em; }
+    h2 { margin-top: 1.5em; color: #333; }
+    img { max-width: 100%; height: auto; margin: 1em 0; }
+    .authors, .resources { font-size: 0.9em; color: #555; }
+    .footer { margin-top: 2em; font-size: 0.8em; color: #777; border-top: 1px solid #eee; padding-top: 1em; }
+    a { color: #0645ad; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <h1>MyProject: Title of Your Work</h1>
+  <p class="authors">
+    Your Name<sup>1</sup>, Collaborator A<sup>2</sup><br />
+    <sup>1</sup>Your Affiliation • <sup>2</sup>Collaborator’s Affiliation
+  </p>
+
+  <p class="links">
+    <a href="#abstract">Abstract</a> •
+    <a href="#method">Method</a> •
+    <a href="#results">Results</a> •
+    <a href="#resources">Resources</a>
+  </p>
+
+  <h2 id="abstract">Abstract</h2>
+  <p>
+    Open-vocabulary 3D functionality segmentation enables robots to localize functional object components in 3D scenes. It is a challenging task that requires spatial understanding and task interpretation. Current open-vocabulary 3D segmentation methods primarily focus on object-level recognition, while scene-wide part segmentation methods attempt to segment the entire scene exhaustively, making them highly resource-intensive. However, such significant computational and storage capacities are typically not accessible on the majority of mobile robots. To address this challenge, we introduce T-FunS3D, a task-driven hierarchical open-vocabulary 3D functionality segmentation method that provides actionable perception for robotic applications. Given a task description, T-FunS3D identifies the most relevant instances in an open-vocabulary scene graph and extracts their functional components. Experiments on SceneFun3D demonstrate that T-FunS3D outperforms baseline methods in open-vocabulary 3D functionality segmentation, while achieving faster runtime and reduced memory usage. 
+  </p>
+
+  <h2>Teaser Image</h2>
+  <img src="path/to/your-image.png" alt="Project teaser image" />
+
+  <h2 id="method">Method</h2>
+  <p>
+    The input of T-FunS3D are posed RBG-images and 3D point clouds of an indoor scene. (A) performs open-vocabulary instance segmentation by associating FG-CLIP~\cite{xie2025fg} visual embeddings to class-agnostic instance segmentation from Mask3D~\cite{schult_mask3d_2023}. We construct a scene graph of the featurized instances (B). Once a task is assigned, we decompose the description into ontologies using Qwen3~\cite{yang2025qwen3} (C) and identify the contextual object in the scene graph (D) by computing the text-visual embedding similarity. Lastly, (E) aggregates 2D masks extracted by combining Molmo~\cite{deitke2025molmo} with SAM~\cite{kirillov2023segment} to obtain 3D segmentation of functional parts.
+  </p>
+  <!-- <ol>
+    <li>Step 1: Overview / summary</li>
+    <li>Step 2: Key components or modules</li>
+    <li>Step 3: Workflow or pipeline (e.g., images → model → output)</li>
+  </ol> -->
+
+  <!-- <h2 id="results">Qualitative Results / Examples</h2>
+  <p>
+    Show off performance or visuals, comparing with baselines if applicable.
+  </p>
+  <img src="path/to/results-image.png" alt="Qualitative results" /> -->
+<!-- 
+  <h2 id="resources">Resources</h2>
+  <ul>
+    <li><a href="https://arxiv.org/…">Paper (arXiv)</a></li>
+    <li><a href="https://github.com/yourname/yourrepo">Code (GitHub)</a></li>
+    <li><a href="https://your-project-website.com">Project Website</a></li>
+  </ul> -->
+
+  <div class="footer">
+    <p>License: Licensed under Creative Commons Attribution-ShareAlike 4.0 International License.</p>
+    <p>Template inspired by the “Nerfies” style.</p>
+  </div>
+
+</body>
+</html>
+
