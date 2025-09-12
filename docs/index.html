@@ -54,11 +54,14 @@
   <p>
     The input of T-FunS3D are posed RBG-images and 3D point clouds of an indoor scene. (A) performs open-vocabulary instance segmentation by associating FG-CLIP [2] visual embeddings to class-agnostic instance segmentation from Mask3D [3]. We construct a scene graph of the featurized instances (B). Once a task is assigned, we decompose the description into ontologies using Qwen3 [4] (C) and identify the contextual object in the scene graph (D) by computing the text-visual embedding similarity. Lastly, (E) aggregates 2D masks extracted by combining Molmo [5] with SAM [6] to obtain 3D segmentation of functional parts.
   </p>
-  <!-- <ol>
-    <li>Step 1: Overview / summary</li>
-    <li>Step 2: Key components or modules</li>
-    <li>Step 3: Workflow or pipeline (e.g., images → model → output)</li>
-  </ol> -->
+
+  <h2 id="results">Quantitative Results</h2>
+  <p>
+    Quantitative results of T-FunS3D on the validation split of SceneFun3D [1].
+    We evaluated our method's ability to segment functional parts according to task descriptions on the validation split of the SceneFun3D [1] dataset.
+    We compared T-FunS3D with four baselines: OpenMask3D [7], LERF [8], OpenIns3D [9], and Fun3DU [10]. Among them, the first three are SOTA open-vocabulary 3D instance segmentation methods, while Fun3DU is the first method dedicated to functionality segmentation in 3D scenes.
+  <img src="static/images/quantitative.png" alt="Quantitative results" />
+
 
   <h2 id="results">Qualitative Results / Examples</h2>
   <p>
@@ -105,6 +108,9 @@
               </p>
               <p>
                 [9] Huang, Zhening, et al. "Openins3D: Snap and lookup for 3d open-vocabulary instance segmentation." European Conference on Computer Vision. 2025.
+              </p>
+              <p>
+                [10] Corsetti, Jaime, et al. "Functionality understanding and segmentation in 3D scenes." Proceedings of the Computer Vision and Pattern Recognition Conference. 2025.
               </p>
           </div>
       </div>
