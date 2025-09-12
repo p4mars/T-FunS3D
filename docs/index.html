@@ -28,7 +28,7 @@
     <a href="#abstract">Abstract</a> •
     <a href="#method">Method</a> •
     <a href="#results">Results</a> •
-    <a href="#resources">Resources</a>
+    <!-- <a href="#resources">Resources</a> -->
   </p>
 
   <h2 id="abstract">Abstract</h2>
@@ -36,12 +36,23 @@
     Open-vocabulary 3D functionality segmentation enables robots to localize functional object components in 3D scenes. It is a challenging task that requires spatial understanding and task interpretation. Current open-vocabulary 3D segmentation methods primarily focus on object-level recognition, while scene-wide part segmentation methods attempt to segment the entire scene exhaustively, making them highly resource-intensive. However, such significant computational and storage capacities are typically not accessible on the majority of mobile robots. To address this challenge, we introduce T-FunS3D, a task-driven hierarchical open-vocabulary 3D functionality segmentation method that provides actionable perception for robotic applications. Given a task description, T-FunS3D identifies the most relevant instances in an open-vocabulary scene graph and extracts their functional components. Experiments on SceneFun3D demonstrate that T-FunS3D outperforms baseline methods in open-vocabulary 3D functionality segmentation, while achieving faster runtime and reduced memory usage. 
   </p>
 
-  <h2>Teaser Image</h2>
-  <img src="./static/images/t-fun3d.png" alt="T-FunS3D Overview" />
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img src="./static/images/t-fun3d.png" alt="T-FunS3D Overview" />
+        <p></p>
+        <!-- <h2 class="subtitle has-text-centered" style="margin-top: 30px;">
+          <b>Fun3DU</b> is the first method designed for <b>functionality understanding and segmentation</b> in 3D scene. 
+          Given an <b>high-resolution 3D scene</b>, a set of RGBD views showing the scene and a description of an action to perform, <b>Fun3DU segments the functional object</b>(s) that can be <b>used to carry out the specific action</b>. 
+          Fun3DU relies on pre-train vision and language models, is <b>training-free</b> and does not require task-specific annotations.
+        </h2> -->
+      </div>
+    </div>
+  </section>
 
   <h2 id="method">Method</h2>
   <p>
-    The input of T-FunS3D are posed RBG-images and 3D point clouds of an indoor scene. (A) performs open-vocabulary instance segmentation by associating FG-CLIP~\cite{xie2025fg} visual embeddings to class-agnostic instance segmentation from Mask3D~\cite{schult_mask3d_2023}. We construct a scene graph of the featurized instances (B). Once a task is assigned, we decompose the description into ontologies using Qwen3~\cite{yang2025qwen3} (C) and identify the contextual object in the scene graph (D) by computing the text-visual embedding similarity. Lastly, (E) aggregates 2D masks extracted by combining Molmo~\cite{deitke2025molmo} with SAM~\cite{kirillov2023segment} to obtain 3D segmentation of functional parts.
+    The input of T-FunS3D are posed RBG-images and 3D point clouds of an indoor scene. (A) performs open-vocabulary instance segmentation by associating FG-CLIP [2] visual embeddings to class-agnostic instance segmentation from Mask3D [3]. We construct a scene graph of the featurized instances (B). Once a task is assigned, we decompose the description into ontologies using Qwen3 [4] (C) and identify the contextual object in the scene graph (D) by computing the text-visual embedding similarity. Lastly, (E) aggregates 2D masks extracted by combining Molmo [5] with SAM [6] to obtain 3D segmentation of functional parts.
   </p>
   <!-- <ol>
     <li>Step 1: Overview / summary</li>
@@ -51,7 +62,7 @@
 
   <h2 id="results">Qualitative Results / Examples</h2>
   <p>
-    Qualitative results of T-FunS3D on SceneFun3D~\cite{feng2024scenefun3d}.
+    Qualitative results of T-FunS3D on SceneFun3D [1].
     Point clouds around the functional parts are highlighted for better visualization: red points indicate predictions, blue points denote ground truth, and green points represent overlaps.
   </p>
   <img src="static/images/res_viz.png" alt="Qualitative results" />
@@ -63,10 +74,59 @@
     <li><a href="https://your-project-website.com">Project Website</a></li>
   </ul> -->
 
-  <div class="footer">
-    <p>License: Licensed under Creative Commons Attribution-ShareAlike 4.0 International License.</p>
-    <p>Template inspired by the “Nerfies” style.</p>
+    <!-- related works. -->
+    <section class="section">
+      <div class="container is-max-desktop">
+            <h2 class="title is-4" id="references">Related work</h2>
+            <div class="content has-text-justified">
+              <p>
+                [1] Delitzas, Alexandros, et al. "Scenefun3D: Fine-grained functionality and affordance understanding in 3D scenes." Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. 2024.
+              </p>
+              <p>
+                [2] Xie, Chunyu, et al. "FG-CLIP: Fine-Grained Visual and Textual Alignment." arXiv preprint arXiv:2505.05071 (2025).
+              </p>
+              <p>
+                [3] Schult, Jonas, et al. "Mask3d: Mask transformer for 3d semantic instance segmentation." arXiv preprint arXiv:2210.03105 (2022).
+              </p>
+              <p>
+                [4] Yang, An, et al. "Qwen3 technical report." arXiv preprint arXiv:2505.09388 (2025).
+              </p>
+              <p>
+                [5] Deitke, Matt, et al. "Molmo and pixmo: Open weights and open data for state-of-the-art vision-language models." Proceedings of the Computer Vision and Pattern Recognition Conference. 2025.
+              </p>
+              <p>
+                [6] Kirillov, Alexander, et al. "Segment anything." Proceedings of the IEEE/CVF international conference on computer vision. 2023.
+              </p>
+              <p>
+                [7] Takmaz, Ayca, et al. "OpenMask3D: Open-Vocabulary 3D Instance Segmentation." Advances in Neural Information Processing Systems. 2024.
+              </p>
+              <p>
+                [8] Kerr, Justin, et al. "Lerf: Language embedded radiance fields." Proceedings of the IEEE/CVF International Conference on Computer Vision. 2023.
+              </p>
+              <p>
+                [9] Huang, Zhening, et al. "Openins3D: Snap and lookup for 3d open-vocabulary instance segmentation." European Conference on Computer Vision. 2025.
+              </p>
+          </div>
+      </div>
+    </section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
   </div>
+</footer>
 
 </body>
 </html>
