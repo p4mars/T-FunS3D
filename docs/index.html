@@ -39,7 +39,7 @@
   <section class="hero teaser">
     <div class="container is-max-desktop">
       <div class="hero-body">
-        <img src="./static/images/t-fun3d.png" alt="T-FunS3D Overview" />
+        <!-- <img src="./static/images/t-fun3d.png" alt="T-FunS3D Overview" /> -->
         <p></p>
         <!-- <h2 class="subtitle has-text-centered" style="margin-top: 30px;">
           <b>Fun3DU</b> is the first method designed for <b>functionality understanding and segmentation</b> in 3D scene. 
@@ -52,7 +52,27 @@
 
   <h2 id="method">Method</h2>
   <p>
-    The input of T-FunS3D are posed RBG-images and 3D point clouds of an indoor scene. (A) performs open-vocabulary instance segmentation by associating FG-CLIP [2] visual embeddings to class-agnostic instance segmentation from Mask3D [3]. We construct a scene graph of the featurized instances (B). Once a task is assigned, we decompose the description into ontologies using Qwen3 [4] (C) and identify the contextual object in the scene graph (D) by computing the text-visual embedding similarity. Lastly, (E) aggregates 2D masks extracted by combining Molmo [5] with SAM [6] to obtain 3D segmentation of functional parts.
+    <b>T-FunS3D</b> is a novel method for <b>efficient open-vocabulary functionality understanding and segmentation</b> in 3D scene using <b>scene graph and VLM</b>. 
+    Given an <b>point cloud</b> of a 3D scene, a set of RGBD views showing the scene along with the associated camera poses and a description of an action to perform, <b>T-FunS3D segments the functional object</b>(s) that can be <b>used to carry out the specific action</b>. 
+    T-FunS3D relies on pre-trained vision and language models, is <b>training-free</b> and does not require task-specific annotations.
+  </p>
+  <h3 id="method_stage1">Stage I: Open-Vocabulary Scene Graph Construction</h3>
+  <img src="./static/images/t-funs3d_stage1.png" alt="T-FunS3D Stage I" />
+  <p>
+    The entire pipeline consists of four main modules (A-D), split into two stages, including an instance-level scene graph construction stage (I) and a task-driven functionality segmentation stage (II).
+    At stage I, (A) performs open-vocabulary instance segmentation by associating FG-CLIP [2] visual embeddings to class-agnostic instance segmentation from Mask3D [3]. We construct a scene graph of the featurized instances (B). 
+    Note that stage I is executed only once per scene, assuming no distinct spatial changes in the environment, and the resulting scene graph is reused for different tasks at stage II.
+    In addition, the constructed scene graph is compact, as it only contains object instances in nodes and their relationships in edges that are stored as embedding feature vectors.
+    Along with the embeddings, the top-k selected views of each instance are also stored to facilitate efficient 2D mask extraction at stage II.
+    Therefore, T-FunS3D is efficient in terms of both runtime and memory usage.
+  </p>
+
+  <h3 id="method_stage2">Stage II: Task-Driven Functionality Segmentation</h3>
+  <img src="./static/images/t-funs3d_stage2.png" alt="T-FunS3D Stage II" />
+  <p>
+    Stage II begins, once a task is assigned. The free-form task description is decompsed into ontologies using Qwen3 [4] (C). 
+    Based on the extracted information, we identify the contextual object in the scene graph (D) by computing the text-visual embedding similarity for candidate nodes and their corresponding edges. 
+    Lastly, (E) aggregates 2D masks extracted by combining Molmo [5] with SAM [6] to obtain 3D segmentation of functional parts.
   </p>
 
   <h2 id="results">Quantitative Results</h2>
